@@ -7,6 +7,15 @@ const TOTAL=254;
 const screens={loading:$('#loadingScreen'),welcome:$('#welcomeScreen'),exam:$('#examScreen'),results:$('#resultsScreen')};
 let state=null,lastResult=null,activeSimId=null;
 
+// Evita que el navegador restaure o cambie el desplazamiento al interactuar.
+if('scrollRestoration' in history) history.scrollRestoration='manual';
+function restoreViewport(x,y){
+  const restore=()=>window.scrollTo({left:x,top:y,behavior:'instant'});
+  restore();
+  requestAnimationFrame(()=>{restore();requestAnimationFrame(restore)});
+  setTimeout(restore,80);
+}
+
 function $(s){return document.querySelector(s)}
 function $$(s){return [...document.querySelectorAll(s)]}
 function esc(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch]))}
@@ -77,10 +86,13 @@ function renderExam(){
   $('#blockTitle').textContent=g.questionCount>1?`Bloque de ${g.questionCount} preguntas`:'Pregunta individual';
   $('#contextNote').innerHTML=g.sharedContext?`<strong>Contexto compartido:</strong> responde juntas las preguntas originales ${g.questionStart} a ${g.questionEnd}.`:`Observa el material y responde la pregunta original ${g.questionStart}.`;
   $('#pageImages').innerHTML=g.pages.map((src,i)=>`<div class="page-image-wrap"><img src="${esc(src)}" alt="Página ${i+1} del bloque" data-zoom="${esc(src)}" loading="eager"><span class="page-badge">Página ${i+1}/${g.pages.length}</span></div>`).join('');
-  $('#answerCards').innerHTML=currentEntries.map(({q,sessionNumber})=>`<section class="answer-card"><div class="answer-card-header"><h3>Pregunta ${sessionNumber} de ${TOTAL}</h3><span class="source-label">N.º original ${esc(q.sourceQuestion)}</span></div><div class="option-row" role="group" aria-label="Opciones de la pregunta ${sessionNumber}">${q.options.map(o=>`<button class="option-btn ${state.answers[q.id]===o?'selected':''}" data-qid="${esc(q.id)}" data-option="${esc(o)}" aria-pressed="${state.answers[q.id]===o}">${esc(o)}</button>`).join('')}</div></section>`).join('');
+  $('#answerCards').innerHTML=currentEntries.map(({q,sessionNumber})=>`<section class="answer-card"><div class="answer-card-header"><h3>Pregunta ${sessionNumber} de ${TOTAL}</h3><span class="source-label">N.º original ${esc(q.sourceQuestion)}</span></div><div class="option-row" role="group" aria-label="Opciones de la pregunta ${sessionNumber}">${q.options.map(o=>`<button type="button" class="option-btn ${state.answers[q.id]===o?'selected':''}" data-qid="${esc(q.id)}" data-option="${esc(o)}" aria-pressed="${state.answers[q.id]===o}">${esc(o)}</button>`).join('')}</div></section>`).join('');
   const ans=answeredCount();$('#progressText').textContent=`${ans} de ${TOTAL} respondidas`;$('#remainingText').textContent=ans===TOTAL?'Lista para finalizar':`${TOTAL-ans} pendientes`;$('#progressBar').style.width=`${ans/TOTAL*100}%`;
   $('#prevBtn').disabled=state.currentGroup===0;$('#nextBtn').classList.toggle('hidden',state.currentGroup===groups.length-1);$('#finishBtn').classList.toggle('hidden',state.currentGroup!==groups.length-1);$('#finishBtn').disabled=ans!==TOTAL;
-  $$('.option-btn').forEach(b=>b.onclick=()=>{
+  $$('.option-btn').forEach(b=>b.addEventListener('click',event=>{
+    event.preventDefault();
+    event.stopPropagation();
+    const scrollX=window.scrollX,scrollY=window.scrollY;
     const qid=b.dataset.qid,option=b.dataset.option;
     state.answers[qid]=option;
     const row=b.closest('.option-row');
@@ -95,7 +107,9 @@ function renderExam(){
     $('#progressBar').style.width=`${updated/TOTAL*100}%`;
     $('#finishBtn').disabled=updated!==TOTAL;
     saveState();
-  });
+    b.blur();
+    restoreViewport(scrollX,scrollY);
+  }));
   $$('[data-zoom]').forEach(img=>img.onclick=()=>openImage(img.dataset.zoom));saveState();showScreen('exam');
 }
 function moveGroup(delta){state.currentGroup=Math.max(0,Math.min(sessionGroups().length-1,state.currentGroup+delta));saveState();renderExam()}
@@ -136,6 +150,10 @@ function renderReview(){
 
 $('#prevBtn').onclick=()=>moveGroup(-1);$('#nextBtn').onclick=()=>moveGroup(1);$('#finishBtn').onclick=finishPractice;$('#exitBtn').onclick=initWelcome;$('#openNavigatorBtn').onclick=renderNavigator;$('#closeNavigatorBtn').onclick=()=>$('#navigatorDialog').close();$('#closeImageBtn').onclick=()=>$('#imageDialog').close();$('#homeBtn').onclick=initWelcome;$('#otherSimulationBtn').onclick=initWelcome;$('#repeatSimulationBtn').onclick=()=>{if(confirm('Se borrará el avance y resultado guardado de este simulacro. ¿Deseas repetirlo?')){localStorage.removeItem(stateKey(activeSimId));localStorage.removeItem(resultKey(activeSimId));createSession(activeSimId);renderExam()}};$('#reviewSubject').onchange=renderReview;$('#reviewFilter').onchange=renderReview;
 window.addEventListener('keydown',e=>{if(!screens.exam.classList.contains('active'))return;if(['a','b','c','d','e','f','g'].includes(e.key.toLowerCase())){const card=$$('.answer-card').find(c=>!c.querySelector('.selected')),btn=card?.querySelector(`[data-option="${e.key.toUpperCase()}"]`);if(btn)btn.click()}});
-if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+// Se desactiva el service worker anterior para que futuras correcciones se vean inmediatamente.
+if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
+  navigator.serviceWorker.getRegistrations().then(regs=>Promise.all(regs.map(reg=>reg.unregister()))).catch(()=>{});
+  if('caches' in window)caches.keys().then(keys=>Promise.all(keys.map(key=>caches.delete(key)))).catch(()=>{});
+}
 initWelcome();
 })();

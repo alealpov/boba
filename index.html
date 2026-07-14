@@ -53,8 +53,8 @@
           <h2 id="blockTitle">Bloque de preguntas</h2>
         </div>
         <div class="toolbar-actions">
-          <button id="openNavigatorBtn" class="btn compact secondary">Mapa de preguntas</button>
-          <button id="exitBtn" class="btn compact ghost">Salir</button>
+          <button type="button" id="openNavigatorBtn" class="btn compact secondary">Mapa de preguntas</button>
+          <button type="button" id="exitBtn" class="btn compact ghost">Salir</button>
         </div>
       </div>
       <div class="progress-wrap">
@@ -69,16 +69,16 @@
       </article>
 
       <div class="exam-nav">
-        <button id="prevBtn" class="btn secondary">← Anterior</button>
-        <button id="finishBtn" class="btn success hidden">Finalizar y calificar</button>
-        <button id="nextBtn" class="btn primary">Siguiente →</button>
+        <button type="button" id="prevBtn" class="btn secondary">← Anterior</button>
+        <button type="button" id="finishBtn" class="btn success hidden">Finalizar y calificar</button>
+        <button type="button" id="nextBtn" class="btn primary">Siguiente →</button>
       </div>
     </section>
 
     <section id="resultsScreen" class="screen">
       <div class="results-header">
         <div><div id="resultSimulationLabel" class="eyebrow">RESULTADO DE ESTUDIO</div><h1>Tu desempeño estimado</h1></div>
-        <button id="homeBtn" class="btn ghost">Inicio</button>
+        <button type="button" id="homeBtn" class="btn ghost">Inicio</button>
       </div>
       <div id="scoreHero" class="score-hero"></div>
       <div id="subjectScores" class="score-grid"></div>
@@ -98,24 +98,24 @@
       </div>
       <div id="reviewList" class="review-list"></div>
       <div class="bottom-actions">
-        <button id="repeatSimulationBtn" class="btn secondary">Repetir este simulacro</button>
-        <button id="otherSimulationBtn" class="btn primary">Ir a los simulacros</button>
+        <button type="button" id="repeatSimulationBtn" class="btn secondary">Repetir este simulacro</button>
+        <button type="button" id="otherSimulationBtn" class="btn primary">Ir a los simulacros</button>
       </div>
     </section>
   </main>
 
   <dialog id="navigatorDialog" class="navigator-dialog">
-    <div class="dialog-head"><h2>Mapa de preguntas</h2><button id="closeNavigatorBtn" class="icon-btn" aria-label="Cerrar">×</button></div>
+    <div class="dialog-head"><h2>Mapa de preguntas</h2><button type="button" id="closeNavigatorBtn" class="icon-btn" aria-label="Cerrar">×</button></div>
     <div class="legend"><span><i class="dot answered"></i>Respondida</span><span><i class="dot pending"></i>Pendiente</span><span><i class="dot current"></i>Bloque actual</span></div>
     <div id="navigatorContent"></div>
   </dialog>
 
   <dialog id="imageDialog" class="image-dialog">
-    <button id="closeImageBtn" class="image-close" aria-label="Cerrar imagen">×</button>
+    <button type="button" id="closeImageBtn" class="image-close" aria-label="Cerrar imagen">×</button>
     <img id="zoomedImage" alt="Página ampliada">
   </dialog>
 
   <script src="data/bank.js"></script>
-  <script src="app.js"></script>
+  <script src="app.js?v=5-scroll-definitivo"></script>
 </body>
 </html>
