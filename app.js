@@ -80,7 +80,22 @@ function renderExam(){
   $('#answerCards').innerHTML=currentEntries.map(({q,sessionNumber})=>`<section class="answer-card"><div class="answer-card-header"><h3>Pregunta ${sessionNumber} de ${TOTAL}</h3><span class="source-label">N.º original ${esc(q.sourceQuestion)}</span></div><div class="option-row" role="group" aria-label="Opciones de la pregunta ${sessionNumber}">${q.options.map(o=>`<button class="option-btn ${state.answers[q.id]===o?'selected':''}" data-qid="${esc(q.id)}" data-option="${esc(o)}" aria-pressed="${state.answers[q.id]===o}">${esc(o)}</button>`).join('')}</div></section>`).join('');
   const ans=answeredCount();$('#progressText').textContent=`${ans} de ${TOTAL} respondidas`;$('#remainingText').textContent=ans===TOTAL?'Lista para finalizar':`${TOTAL-ans} pendientes`;$('#progressBar').style.width=`${ans/TOTAL*100}%`;
   $('#prevBtn').disabled=state.currentGroup===0;$('#nextBtn').classList.toggle('hidden',state.currentGroup===groups.length-1);$('#finishBtn').classList.toggle('hidden',state.currentGroup!==groups.length-1);$('#finishBtn').disabled=ans!==TOTAL;
-  $$('.option-btn').forEach(b=>b.onclick=()=>{state.answers[b.dataset.qid]=b.dataset.option;saveState();renderExam()});
+  $$('.option-btn').forEach(b=>b.onclick=()=>{
+    const qid=b.dataset.qid,option=b.dataset.option;
+    state.answers[qid]=option;
+    const row=b.closest('.option-row');
+    row?.querySelectorAll('.option-btn').forEach(btn=>{
+      const selected=btn.dataset.option===option;
+      btn.classList.toggle('selected',selected);
+      btn.setAttribute('aria-pressed',String(selected));
+    });
+    const updated=answeredCount();
+    $('#progressText').textContent=`${updated} de ${TOTAL} respondidas`;
+    $('#remainingText').textContent=updated===TOTAL?'Lista para finalizar':`${TOTAL-updated} pendientes`;
+    $('#progressBar').style.width=`${updated/TOTAL*100}%`;
+    $('#finishBtn').disabled=updated!==TOTAL;
+    saveState();
+  });
   $$('[data-zoom]').forEach(img=>img.onclick=()=>openImage(img.dataset.zoom));saveState();showScreen('exam');
 }
 function moveGroup(delta){state.currentGroup=Math.max(0,Math.min(sessionGroups().length-1,state.currentGroup+delta));saveState();renderExam()}
