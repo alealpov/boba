@@ -1,0 +1,105 @@
+{
+  "generatedAt": "2026-07-13T23:46:32.010019+00:00",
+  "passed": true,
+  "checks": {
+    "total_questions": 508,
+    "unique_question_ids": 508,
+    "total_groups": 354,
+    "subject_totals": {
+      "Lectura Crítica": 82,
+      "Matemáticas": 100,
+      "Sociales y Ciudadanas": 100,
+      "Ciencias Naturales": 116,
+      "Inglés": 110
+    },
+    "question_text_missing": 0,
+    "correct_option_text_missing": 0,
+    "invalid_answers": 0,
+    "solution_fields_missing": 0,
+    "solutions_with_fewer_than_3_steps": 0,
+    "missing_assets": 0,
+    "simulations": [
+      {
+        "id": "simulacro-1",
+        "questions": 254,
+        "groups": 173,
+        "bySubject": {
+          "Lectura Crítica": 41,
+          "Matemáticas": 50,
+          "Sociales y Ciudadanas": 50,
+          "Ciencias Naturales": 58,
+          "Inglés": 55
+        },
+        "uniqueQuestionIds": 254
+      },
+      {
+        "id": "simulacro-2",
+        "questions": 254,
+        "groups": 181,
+        "bySubject": {
+          "Lectura Crítica": 41,
+          "Matemáticas": 50,
+          "Sociales y Ciudadanas": 50,
+          "Ciencias Naturales": 58,
+          "Inglés": 55
+        },
+        "uniqueQuestionIds": 254
+      }
+    ],
+    "cross_simulation_question_overlap": 0,
+    "semantic_duplicate_pairs_at_configured_thresholds": 0,
+    "semantic_thresholds": {
+      "Lectura Crítica": 88,
+      "Matemáticas": 90,
+      "Sociales y Ciudadanas": 91,
+      "Ciencias Naturales": 90,
+      "Inglés": 88
+    },
+    "solution_statuses": {
+      "enhanced_guided": 315,
+      "official_explained": 93,
+      "manual_verified": 100
+    },
+    "answer_sources": {
+      "official": 441,
+      "analytical_high_confidence": 1,
+      "manual_verified": 66
+    },
+    "sources_by_subject": {
+      "Lectura Crítica": {
+        "16-feb-cuadernillo-de-preguntas-lectura-critica-saber-11-2026.pdf": 35,
+        "guia-lecturacritica-11-1.pdf": 20,
+        "cuadernillo-de-preguntas-saber-11-lectura-critica-2019.pdf": 27
+      },
+      "Matemáticas": {
+        "09-Marzo_Cuadernillo-de-Preguntas-Matematicas-Saber-11-2026.pdf": 41,
+        "guia-matematicas-11-1.pdf": 20,
+        "Cuadernillo-MT.pdf": 39
+      },
+      "Sociales y Ciudadanas": {
+        "cuadernillo-de-preguntas-saber-11-sociales-y-ciudadanas-2019.pdf": 48,
+        "Cuadernillo-SocialesyCiudadanas-11-2022.pdf": 1,
+        "06_PRACTICA_SOCIALES.pdf": 46,
+        "Cuadernillo-SocialesyCiudadanas-11-1.pdf": 5
+      },
+      "Ciencias Naturales": {
+        "cuadernillo-de-preguntas-saber-11-ciencias-naturales-2019.pdf": 27,
+        "24-feb-cuadernillo-preguntas-ciencias-naturales-saber-11-2026.pdf": 36,
+        "Guia-PC-CienciasNaturales-11-1.pdf": 20,
+        "Guia-PC-CienciasNaturales-11-2.pdf": 20,
+        "guia-cienciasnaturales-11-1.pdf": 13
+      },
+      "Inglés": {
+        "cuadernillo-de-preguntas-ingles-saber-11-2019.pdf": 49,
+        "Cuadernillo-Ingles-11-1.pdf": 11,
+        "Cuadernillo-Ingles-11-2021.pdf": 25,
+        "Cuadernillo-Ingles-11-2022.pdf": 25
+      }
+    },
+    "english_2024_questions": 0,
+    "bank_js_exists": true,
+    "bank_js_size": 2416047,
+    "bank_sha256": "13d7d6455a8367a74fffdd5c425b867a56dacdb572cd98710d72e447148255c1"
+  },
+  "issues": []
+}

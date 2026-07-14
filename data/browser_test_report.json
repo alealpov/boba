@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-07-13T23:46:28.848118+00:00",
+  "passed": true,
+  "partition": [
+    {
+      "id": "simulacro-1",
+      "total": 254,
+      "bySubject": {
+        "Lectura Crítica": 41,
+        "Matemáticas": 50,
+        "Sociales y Ciudadanas": 50,
+        "Ciencias Naturales": 58,
+        "Inglés": 55
+      }
+    },
+    {
+      "id": "simulacro-2",
+      "total": 254,
+      "bySubject": {
+        "Lectura Crítica": 41,
+        "Matemáticas": 50,
+        "Sociales y Ciudadanas": 50,
+        "Ciencias Naturales": 58,
+        "Inglés": 55
+      }
+    }
+  ],
+  "questionOverlap": 0,
+  "allCorrectScores": [
+    495,
+    495
+  ],
+  "verifiedSolutionVisible": true,
+  "consoleErrors": []
+}

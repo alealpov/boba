@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-07-13T23:46:28.843388+00:00",
+  "total": 508,
+  "solutionStatuses": {
+    "enhanced_guided": 315,
+    "official_explained": 93,
+    "manual_verified": 100
+  },
+  "answerSources": {
+    "official": 441,
+    "analytical_high_confidence": 1,
+    "manual_verified": 66
+  },
+  "definitions": {
+    "official_explained": "Explicación basada en material pedagógico oficial incorporado al banco.",
+    "manual_verified": "Explicación revisada de forma específica contra la clave, el enunciado y/o la figura.",
+    "enhanced_guided": "Ruta pedagógica individualizada a partir del enunciado y la clave. Se muestra en la aplicación como guiada, no como explicación oficial."
+  },
+  "minimumStructure": {
+    "whyCorrect": true,
+    "minimumSteps": 3,
+    "distractorAnalysis": true,
+    "miniGuide": true
+  }
+}

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#173f5f">
+  <meta name="description" content="Dos simulacros personales Saber 11 de 254 preguntas, sin repeticiones, con guardado automático y revisión paso a paso.">
+  <title>Dos simulacros Saber 11</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23173f5f%22/><text x=%2232%22 y=%2241%22 font-size=%2226%22 text-anchor=%22middle%22 fill=%22white%22>11</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">11°</span>
+      <div><strong>Práctica Saber 11</strong><small>Dos simulacros personales</small></div>
+    </div>
+    <div id="saveStatus" class="save-status" aria-live="polite"></div>
+  </header>
+
+  <main id="app" class="app-shell">
+    <section id="loadingScreen" class="screen active center-screen">
+      <div class="loader"></div><p>Preparando los simulacros…</p>
+    </section>
+
+    <section id="welcomeScreen" class="screen">
+      <div class="hero-card">
+        <div class="eyebrow">ESTUDIO PERSONAL · SIN CRONÓMETRO</div>
+        <h1>Dos simulacros completos, sin preguntas repetidas</h1>
+        <p class="hero-copy">Cada simulacro contiene 254 preguntas. El avance queda guardado automáticamente en este navegador y las soluciones solo aparecen al finalizar.</p>
+        <p id="bankSummary" class="bank-summary"></p>
+        <div class="subject-summary" id="subjectSummary"></div>
+        <div class="notice">
+          <strong>Puntaje orientativo, no oficial.</strong> La estimación usa un modelo 3PL aproximado y la ponderación global del Saber 11. No sustituye el resultado oficial del ICFES.
+        </div>
+      </div>
+
+      <div id="simulationCards" class="simulation-grid" aria-label="Simulacros disponibles"></div>
+
+      <div class="feature-grid">
+        <article><b>508 preguntas únicas</b><span>Los dos simulacros no comparten ninguna pregunta.</span></article>
+        <article><b>Bloques completos</b><span>Los textos, tablas y gráficas permanecen unidos a sus preguntas.</span></article>
+        <article><b>Revisión final</b><span>Consulta la clave, el paso a paso, los distractores y una mini guía.</span></article>
+      </div>
+    </section>
+
+    <section id="examScreen" class="screen">
+      <div class="exam-toolbar">
+        <div>
+          <div id="simulationLabel" class="simulation-label"></div>
+          <div id="subjectLabel" class="eyebrow"></div>
+          <h2 id="blockTitle">Bloque de preguntas</h2>
+        </div>
+        <div class="toolbar-actions">
+          <button id="openNavigatorBtn" class="btn compact secondary">Mapa de preguntas</button>
+          <button id="exitBtn" class="btn compact ghost">Salir</button>
+        </div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-meta"><span id="progressText"></span><span id="remainingText"></span></div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      </div>
+
+      <article class="question-panel">
+        <div id="contextNote" class="context-note"></div>
+        <div id="pageImages" class="page-images"></div>
+        <div id="answerCards" class="answer-cards"></div>
+      </article>
+
+      <div class="exam-nav">
+        <button id="prevBtn" class="btn secondary">← Anterior</button>
+        <button id="finishBtn" class="btn success hidden">Finalizar y calificar</button>
+        <button id="nextBtn" class="btn primary">Siguiente →</button>
+      </div>
+    </section>
+
+    <section id="resultsScreen" class="screen">
+      <div class="results-header">
+        <div><div id="resultSimulationLabel" class="eyebrow">RESULTADO DE ESTUDIO</div><h1>Tu desempeño estimado</h1></div>
+        <button id="homeBtn" class="btn ghost">Inicio</button>
+      </div>
+      <div id="scoreHero" class="score-hero"></div>
+      <div id="subjectScores" class="score-grid"></div>
+      <div class="notice result-note">
+        Este resultado no reproduce la calificación oficial del ICFES. Sirve para seguir el progreso y detectar áreas de refuerzo.
+      </div>
+      <div class="review-header">
+        <div><h2>Revisión de respuestas</h2><p>La clave se muestra únicamente después de completar las 254 preguntas.</p></div>
+        <div class="review-controls">
+          <select id="reviewSubject" aria-label="Filtrar por materia"></select>
+          <select id="reviewFilter" aria-label="Filtrar por resultado">
+            <option value="incorrect">Solo incorrectas</option>
+            <option value="all">Todas</option>
+            <option value="correct">Solo correctas</option>
+          </select>
+        </div>
+      </div>
+      <div id="reviewList" class="review-list"></div>
+      <div class="bottom-actions">
+        <button id="repeatSimulationBtn" class="btn secondary">Repetir este simulacro</button>
+        <button id="otherSimulationBtn" class="btn primary">Ir a los simulacros</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="navigatorDialog" class="navigator-dialog">
+    <div class="dialog-head"><h2>Mapa de preguntas</h2><button id="closeNavigatorBtn" class="icon-btn" aria-label="Cerrar">×</button></div>
+    <div class="legend"><span><i class="dot answered"></i>Respondida</span><span><i class="dot pending"></i>Pendiente</span><span><i class="dot current"></i>Bloque actual</span></div>
+    <div id="navigatorContent"></div>
+  </dialog>
+
+  <dialog id="imageDialog" class="image-dialog">
+    <button id="closeImageBtn" class="image-close" aria-label="Cerrar imagen">×</button>
+    <img id="zoomedImage" alt="Página ampliada">
+  </dialog>
+
+  <script src="data/bank.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

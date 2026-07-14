@@ -1,0 +1,10 @@
+{
+  "remainingPairs": [],
+  "thresholds": {
+    "Lectura Crítica": 88,
+    "Matemáticas": 90,
+    "Sociales y Ciudadanas": 91,
+    "Ciencias Naturales": 90,
+    "Inglés": 88
+  }
+}

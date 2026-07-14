@@ -1,0 +1,275 @@
+[
+  {
+    "kept": "reading2019:12",
+    "excluded": [
+      "reading2026:main:12"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "reading2026:main:15",
+    "excluded": [
+      "reading2019:14"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "reading2026:main:17",
+    "excluded": [
+      "reading2019:17"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "reading2019:22",
+    "excluded": [
+      "reading2026:main:22"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "reading2019:24",
+    "excluded": [
+      "reading2026:main:24"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "reading2026:main:28",
+    "excluded": [
+      "reading2019:28"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "reading2026:main:32",
+    "excluded": [
+      "reading2019:32"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "reading2026:main:38",
+    "excluded": [
+      "reading2019:38"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "reading2026:main:39",
+    "excluded": [
+      "reading2019:39"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "reading2026:main:40",
+    "excluded": [
+      "reading2019:40"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "math2019:02",
+    "excluded": [
+      "math2026:main:02"
+    ],
+    "subject": "Matemáticas"
+  },
+  {
+    "kept": "math2026:main:11",
+    "excluded": [
+      "math2019:11"
+    ],
+    "subject": "Matemáticas"
+  },
+  {
+    "kept": "math2019:12",
+    "excluded": [
+      "math2026:main:12"
+    ],
+    "subject": "Matemáticas"
+  },
+  {
+    "kept": "math2019:22",
+    "excluded": [
+      "math2026:main:22"
+    ],
+    "subject": "Matemáticas"
+  },
+  {
+    "kept": "math2019:30",
+    "excluded": [
+      "math2026:main:30"
+    ],
+    "subject": "Matemáticas"
+  },
+  {
+    "kept": "math2019:32",
+    "excluded": [
+      "math2026:main:33"
+    ],
+    "subject": "Matemáticas"
+  },
+  {
+    "kept": "eva2020-math1:01",
+    "excluded": [
+      "math2026:main:36"
+    ],
+    "subject": "Matemáticas"
+  },
+  {
+    "kept": "math2019:37",
+    "excluded": [
+      "math2026:main:37"
+    ],
+    "subject": "Matemáticas"
+  },
+  {
+    "kept": "math2019:40",
+    "excluded": [
+      "math2026:main:40"
+    ],
+    "subject": "Matemáticas"
+  },
+  {
+    "kept": "math2019:48",
+    "excluded": [
+      "math2026:main:47"
+    ],
+    "subject": "Matemáticas"
+  },
+  {
+    "kept": "social2021:14",
+    "excluded": [
+      "social2019:main:14"
+    ],
+    "subject": "Sociales y Ciudadanas"
+  },
+  {
+    "kept": "social2019:main:15",
+    "excluded": [
+      "social2021:15"
+    ],
+    "subject": "Sociales y Ciudadanas"
+  },
+  {
+    "kept": "social2019:main:48",
+    "excluded": [
+      "social2021:47"
+    ],
+    "subject": "Sociales y Ciudadanas"
+  },
+  {
+    "kept": "science2019:main:23",
+    "excluded": [
+      "science2026:main:29"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "science2026:main:46",
+    "excluded": [
+      "science2019:main:49"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "science2026:main:04",
+    "excluded": [
+      "science2019:11"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "science2019:03",
+    "excluded": [
+      "science2026:main:14"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "science2026:main:22",
+    "excluded": [
+      "science2019:36"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "eva2020-science1:06",
+    "excluded": [
+      "science2026:main:24"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "science2019:21",
+    "excluded": [
+      "science2026:main:27"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "science2019:40",
+    "excluded": [
+      "science2026:main:32"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "science2019:29",
+    "excluded": [
+      "science2026:main:37"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "science2019:30",
+    "excluded": [
+      "science2026:main:39"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "science2019:47",
+    "excluded": [
+      "science2026:main:44"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "science2019:42",
+    "excluded": [
+      "science2026:main:47"
+    ],
+    "subject": "Ciencias Naturales"
+  },
+  {
+    "kept": "reading2026:42",
+    "excluded": [
+      "reading2019:42"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "reading2026:43",
+    "excluded": [
+      "reading2019:43"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "reading2019:49",
+    "excluded": [
+      "reading2026:49"
+    ],
+    "subject": "Lectura Crítica"
+  },
+  {
+    "kept": "english2022:16",
+    "excluded": [
+      "english2019e2:21"
+    ],
+    "subject": "Inglés"
+  }
+]
